@@ -19,7 +19,7 @@ OBJ_PATH = objs/
 LIBFT_PATH = libft/
 LIBFT_AR = $(LIBFT_PATH)libft.a
 
-SRC = color.c handle_keys.c mathing.c render.c main.c exit.c init.c fractals.c color_update.c
+SRC = color.c color_update.c handle_keys.c mathing.c render.c main.c exit.c init.c fractals.c 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJ = $(SRC:.c=.o)
 OBJS = $(addprefix $(OBJ_PATH), $(OBJ))

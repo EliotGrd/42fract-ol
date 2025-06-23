@@ -29,5 +29,5 @@
 # define MOUSE_WHEEL_UP 4
 # define MOUSE_WHEEL_DOWN 5
 # define KEY_C 99
-
+# define KEY_H 104
 #endif

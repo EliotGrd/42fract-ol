@@ -26,15 +26,21 @@ void	init_clear(t_fractol *f)
 	f->offset_y = 0;
 	f->jr = 0;
 	f->ji = 0;
+	f->pv.k.reel = 0;
+	f->pv.k.imag = 0;
+	f->pv.c.reel = 0;
+	f->pv.c.imag = 0;
 }
 
 void	init_image(t_fractol *f)
 {
 	t_img	nimg;
+
 	nimg.img = mlx_new_image(f->mlx, WIDTH, HEIGHT);
 	if (!nimg.img)
 		exit_fractol(MALLOC, f);
-	nimg.addr = mlx_get_data_addr(nimg.img, &nimg.bits_per_pixel, &nimg.line_length, &nimg.endian);
+	nimg.addr = mlx_get_data_addr(nimg.img, &nimg.bits_per_pixel,
+			&nimg.line_length, &nimg.endian);
 	if (!nimg.addr)
 		exit_fractol(MALLOC, f);
 	f->img = nimg;

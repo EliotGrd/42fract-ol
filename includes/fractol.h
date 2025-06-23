@@ -26,41 +26,16 @@
 # define MALLOC 2
 
 /* Libraries */
-#include "../libft/includes/libft.h"
-#include "../minilibx-linux/mlx.h"
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
+# include "../libft/includes/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 /* COLORS */
-#define BLACK   0xFF000000
+# define BLACK   0xFF000000
 
 /* Structs */
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_img;
-
-typedef struct s_fractol
-{
-	void	*mlx;
-	void	*win;
-	t_img	img;
-	char	*type;
-	int		c_max_iter;
-	int		color_mode;
-	double	zoom;
-    double	offset_x;
-    double	offset_y;
-	double	jr;
-	double	ji;
-	int		*color_table;
-}			t_fractol;
-
 typedef struct s_pixel
 {
 	double	x;
@@ -73,11 +48,44 @@ typedef struct s_complex
 	double	imag;
 }			t_complex;
 
+typedef struct s_pvalues
+{
+	t_complex	k;
+	t_complex	c;
+}				t_pvalues;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_img;
+
+typedef struct s_fractol
+{
+	void		*mlx;
+	void		*win;
+	t_img		img;
+	char		*type;
+	int			c_max_iter;
+	int			color_mode;
+	int			*color_table;
+	double		zoom;
+	double		offset_x;
+	double		offset_y;
+	double		jr;
+	double		ji;
+	t_pvalues	pv;
+}				t_fractol;
+
+
 /* Maths */
 t_complex	c_add(t_complex a, t_complex b);
 t_complex	c_mult(t_complex a, t_complex b);
 int			c_abs(t_complex a);
-double		scale(double to_scale, double new_min, double new_max, double old_max);
+double		scale(double to_scale, double n_min, double n_max, double o_max);
 
 /* Init */
 void		init_clear(t_fractol *f);
@@ -90,6 +98,7 @@ void		key_controller(t_fractol *f);
 int			mandelbrot(t_complex c, int c_max_iter);
 int			julia(t_complex c, t_complex z, int c_max_iter);
 int			burningship(t_complex c, int c_max_iter);
+int			phoenix(t_complex z, t_complex k, t_complex c, int c_max_iter);
 
 /* Palettes */
 int			poli_gradiant(int iter, int max_iter);
