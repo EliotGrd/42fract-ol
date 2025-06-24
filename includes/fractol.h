@@ -19,6 +19,7 @@
 
 /* Misc */
 # define MAX_ITER 50
+# define ITER_TRESHOLD 310
 
 /* Err Codes */
 # define QUIT 0
@@ -79,7 +80,6 @@ typedef struct s_fractol
 	double		ji;
 	t_pvalues	pv;
 }				t_fractol;
-
 
 /* Maths */
 t_complex	c_add(t_complex a, t_complex b);

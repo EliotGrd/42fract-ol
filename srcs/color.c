@@ -47,7 +47,7 @@ int	fire_thing(int iter, int max_iter)
 	double	t;
 	int		r;
 	int		g;
-	int		b;-0.5 0 0.5666 0
+	int		b;
 
 	if (iter == max_iter)
 		return (0x000000);

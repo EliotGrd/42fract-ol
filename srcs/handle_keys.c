@@ -15,15 +15,15 @@
 
 static void	handle_key_suite(int keycode, t_fractol *f)
 {
-	if (keycode == KEY_PLUS)
+	if (keycode == KEY_MINUS)
 	{
-		f->c_max_iter += 10;
-		update_color_table(f);
-	}
-	else if (keycode == KEY_MINUS)
-	{
-		f->c_max_iter -= 10;
-		update_color_table(f);
+		if (f->c_max_iter > 0)
+		{
+			f->c_max_iter -= 10;
+			update_color_table(f);
+		}
+		else
+			ft_printf("Minimum iterations reached !\n");
 	}
 	else if (keycode == KEY_C)
 	{
@@ -49,6 +49,16 @@ void	handle_key(int keycode, t_fractol *f)
 		f->offset_y += 0.4 * f->zoom;
 	else if (keycode == KEY_D || keycode == KEY_RIGHT)
 		f->offset_x += 0.4 * f->zoom;
+	else if (keycode == KEY_PLUS)
+	{
+		if (f->c_max_iter < ITER_TRESHOLD)
+		{
+			f->c_max_iter += 10;
+			update_color_table(f);
+		}
+		else
+			ft_printf("Maximum iterations reached !\n");
+	}
 	handle_key_suite(keycode, f);
 	render_fractal(f);
 }
@@ -77,8 +87,8 @@ void	handle_mouse_key(int keycode, int x, int y, t_fractol *f)
 {
 	(void)x;
 	if (keycode == MOUSE_WHEEL_UP)
-		zoom_at_point(x, y, 0.97, f);
+		zoom_at_point(x, y, 0.8, f);
 	else if (keycode == MOUSE_WHEEL_DOWN)
-		zoom_at_point(x, y, 1.03, f);
+		zoom_at_point(x, y, 1.2, f);
 	render_fractal(f);
 }
