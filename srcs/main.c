@@ -76,8 +76,8 @@ int	main(int ac, char **av)
 	init_fractol(&f);
 	ft_printf("Program launched, press h for help\n");
 	render_fractal(&f);
-	mlx_key_hook(f.win, (int (*)())handle_key, &f);
-	mlx_mouse_hook(f.win, (int (*)())handle_mouse_key, &f);
-	mlx_hook(f.win, 17, 0, (int (*)())handle_close, &f);
+	mlx_key_hook(f.win, (int (*)())(void *)handle_key, &f);
+	mlx_mouse_hook(f.win, (int (*)())(void *)handle_mouse_key, &f);
+	mlx_hook(f.win, 17, 0, (int (*)())(void *)handle_close, &f);
 	mlx_loop(f.mlx);
 }

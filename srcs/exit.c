@@ -20,8 +20,10 @@ void	free_fractol(t_fractol *f)
 		mlx_destroy_window(f->mlx, f->win);
 	if (f->mlx)
 	{
+#ifdef __linux__
 		mlx_loop_end(f->mlx);
 		mlx_destroy_display(f->mlx);
+#endif
 		free(f->mlx);
 	}
 	if (f->color_table)
