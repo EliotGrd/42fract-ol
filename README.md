@@ -8,7 +8,7 @@
 ## 📊 How it works ?
 The point of this project is to displays some fractals using the minilibx, a library that simplify the use of the X Window System.  
 Basically, the program iterates on each pixel of the window and go through the fractal's equation multiple times (the more you iterate the more the fractal will be "precise")  
-Each pixel is somewhat mapped to a geometric plan so we can thing of it like each pixel is a point of the plan.  
+Each pixel is somewhat mapped to a geometric plan so we can think of it like each pixel is a point of the plan.  
 Doing this for each pixel and watching at which iteration the point "escapes" will define the color of the pixel.
 All the points that, through the multiple iterations on the equation, converges (stays in the range of 2 from the origin of the plan) are colored in black. 
 I implemented 4 fractals : Mandelbrot, Julias, Burningship and Pheonix.  
